@@ -12,23 +12,24 @@ export const signupController = async (req,res)=>{
         })
     };
     console.log("2")
-    if (password.length < 8) {
+    if (userPassword.length < 8) {
         console.log("3")
         return res.status(400).json({
         status: false,
         message: "Password length should be minimum 8 characters"
     })
-    }
+    };
     console.log("4")
     const user = {
         userName:userName,
         userEmail:userEmail,
         userPassword:userPassword
     }
-    console.log("5")
+
+    console.log("5 ==>",user)
     const userSchemaCheck = new userSchema(user)
-    const usersSave = await userSchemaCheck.save()
-    console.log("6")
+    console.log("6",userSchemaCheck)
+    
     res.json({
         status: true,
         message: "Users Signed Up Successfully"
